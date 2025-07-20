@@ -1,0 +1,320 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "Contact" %} - Arad Rezvaninejad
+{% endblock %}
+
+{% block content %}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Brightening effect */
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        .bright-spot {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(79, 209, 197, 0.4) 0%, rgba(79, 209, 197, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: screen;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+        }
+        
+        .hover-effect:hover ~ .cursor {
+            transform: scale(1.5);
+        }
+        
+        .hover-effect:hover ~ .cursor-follower {
+            transform: scale(1.5);
+            background: rgba(79, 209, 197, 0.5);
+        }
+        
+        /* Floating animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Pulse animation */
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+        
+        .pulse {
+            animation: pulse 3s ease infinite;
+        }
+        
+        /* Glow effect */
+        .glow {
+            transition: all 0.3s ease;
+        }
+        
+        .glow:hover {
+            box-shadow: 0 0 15px rgba(79, 209, 197, 0.7);
+        }
+        
+        /* Mobile menu animation */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+
+        /* Background particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            background-color: rgba(79, 209, 197, 0.5);
+            border-radius: 50%;
+            animation: float-particle linear infinite;
+        }
+        
+        @keyframes float-particle {
+            to {
+                transform: translateY(-100vh);
+            }
+        }
+    </style>
+</head>
+    <!-- Bright spot element -->
+    <div class="bright-spot" id="bright-spot"></div>
+    
+    <!-- Background particles -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Main content -->
+    <div class="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 relative">
+        <!-- Floating animated elements -->
+        <div class="absolute top-1/4 left-1/4 w-8 h-8 rounded-full bg-teal-400 opacity-30 floating"></div>
+        <div class="absolute top-1/3 right-1/4 w-12 h-12 rounded-full bg-purple-400 opacity-30 floating" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-1/4 right-1/3 w-10 h-10 rounded-full bg-blue-400 opacity-30 floating" style="animation-delay: 2s;"></div>
+        
+        <!-- Main card with glow effect -->
+         
+        <!-- Contact Form Card -->
+        <div class="w-full max-w-2xl bg-gray-800 bg-opacity-70 backdrop-blur-lg rounded-xl shadow-xl overflow-hidden glow hover-effect transition-all duration-500 transform hover:scale-105 p-8 border border-gray-700">
+            <div class="text-center">
+                <!-- Contact Title -->
+                <h1 class="text-4xl sm:text-5xl font-bold text-teal-400 mb-6 pulse">
+                    <span class="inline-block transition-all duration-300 hover:text-white">{% trans "Contact Me" %}</span>
+                </h1>
+
+                <!-- Contact Form -->
+                <form method="post" action="{% url 'contact' %}" class="space-y-6 text-left">
+    {% csrf_token %}
+
+{% if success %}
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: '{{ success }}',
+            background: '#1f2937', // dark gray
+            color: '#d1fae5', // light green
+            iconColor: '#10b981', // tailwind teal-500
+            showConfirmButton: false,
+            timer: 3000,
+            customClass: {
+                popup: 'rounded-xl shadow-xl'
+            }
+        });
+    </script>
+{% elif error %}
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: '{{ error }}',
+            background: '#1f2937', // dark gray
+            color: '#fecaca', // light red
+            iconColor: '#ef4444', // tailwind red-500
+            showConfirmButton: true,
+            confirmButtonColor: '#f87171', // light red button
+            customClass: {
+                popup: 'rounded-xl shadow-xl'
+            }
+        });
+    </script>
+{% endif %}
+
+
+    <div>
+        <label for="name" class="block text-gray-300 text-left mb-2">{% trans "Your Name" %}</label>
+        <input
+            type="text"
+            id="name"
+            name="name"
+            value="{{ name }}"
+            class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400 text-white"
+            placeholder="{% trans 'Enter your name' %}"
+            required
+        >
+    </div>
+
+    <div>
+        <label for="email" class="block text-gray-300 text-left mb-2">{% trans "Email Address" %}</label>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            value="{{ email }}"
+            class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400 text-white"
+            placeholder="{% trans 'your@email.com' %}"
+            required
+        >
+    </div>
+
+    <div>
+        <label for="message" class="block text-gray-300 text-left mb-2">{% trans "Message" %}</label>
+        <textarea
+            id="message"
+            name="message"
+            rows="4"
+            class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400 text-white"
+            placeholder="{% trans 'Your message here...' %}"
+            required
+        >{{ message }}</textarea>
+    </div>
+
+    <div class="pt-4">
+        <button type="submit" class="w-full px-6 py-3 bg-teal-500 hover:bg-teal-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg hover-effect">
+            <i class="fas fa-paper-plane mr-2"></i> {% trans "Send Message" %}
+        </button>
+    </div>
+</form>
+
+
+                
+            </div>
+
+                <!-- Animated footer -->
+        <footer class="mt-12 text-center text-gray-400 text-sm pulse">
+            <p>{% trans "© 2023 Arad. All rights reserved." %}</p>
+            <div class="mt-2 flex justify-center space-x-4">
+                <a href="#" class="hover:text-teal-400 transition-colors duration-300 hover-effect" aria-label="{% trans 'Twitter' %}">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="hover:text-teal-400 transition-colors duration-300 hover-effect" aria-label="{% trans 'GitHub' %}">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="hover:text-teal-400 transition-colors duration-300 hover-effect" aria-label="{% trans 'LinkedIn' %}">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </footer>
+    </div>
+        <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('open');
+        });
+
+        // Bright spot movement
+        const brightSpot = document.getElementById('bright-spot');
+        
+        document.addEventListener('mousemove', (e) => {
+            brightSpot.style.left = e.clientX + 'px';
+            brightSpot.style.top = e.clientY + 'px';
+        });
+        
+        // Make spot brighter when hovering interactive elements
+        const interactiveElements = document.querySelectorAll('a, button, .hover-effect');
+        
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                brightSpot.style.background = 'radial-gradient(circle, rgba(79, 209, 197, 0.8) 0%, rgba(79, 209, 197, 0) 70%)';
+                brightSpot.style.width = '250px';
+                brightSpot.style.height = '250px';
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                brightSpot.style.background = 'radial-gradient(circle, rgba(79, 209, 197, 0.4) 0%, rgba(79, 209, 197, 0) 70%)';
+                brightSpot.style.width = '200px';
+                brightSpot.style.height = '200px';
+            });
+        });
+        
+        // Create background particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size between 2px and 8px
+                const size = Math.random() * 6 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation duration between 10s and 30s
+                const duration = Math.random() * 20 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Random delay
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Initialize particles when page loads
+        window.addEventListener('load', createParticles);
+        
+        // Add ripple effect to buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                
+                const x = e.clientX - e.target.getBoundingClientRect().left;
+                const y = e.clientY - e.target.getBoundingClientRect().top;
+                
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 1000);
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,354 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}
+{% trans "Arad" %}
+{% endblock %}
+
+{% block content %}
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    /* Background Animation Styles */
+    .animated-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    }
+
+    /* Floating particles */
+    .particle {
+        position: absolute;
+        background-color: rgba(79, 209, 197, 0.5);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    /* Animated gradient overlay */
+    .gradient-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg,
+                rgba(26, 26, 46, 0.8) 0%,
+                rgba(22, 33, 62, 0.6) 50%,
+                rgba(26, 26, 46, 0.8) 100%);
+        background-size: 200% 200%;
+        animation: gradientFlow 15s ease infinite;
+    }
+
+    @keyframes gradientFlow {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    /* Floating circles */
+    .floating-circle {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(40px);
+        opacity: 0.2;
+        animation: floatAnimation linear infinite;
+    }
+
+    @keyframes floatAnimation {
+        0% {
+            transform: translateY(0) rotate(0deg);
+        }
+
+        100% {
+            transform: translateY(-100vh) rotate(360deg);
+        }
+    }
+
+    /* Light pulse effect */
+    .light-pulse {
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(circle,
+                rgba(79, 209, 197, 0.3) 0%,
+                rgba(79, 209, 197, 0) 70%);
+        animation: pulseAnimation 6s ease infinite;
+    }
+
+    @keyframes pulseAnimation {
+        0% {
+            transform: scale(0.8);
+            opacity: 0.1;
+        }
+
+        50% {
+            transform: scale(1.2);
+            opacity: 0.3;
+        }
+
+        100% {
+            transform: scale(0.8);
+            opacity: 0.1;
+        }
+    }
+</style>
+
+<div class="animated-background" id="animatedBackground">
+    <div class="gradient-overlay"></div>
+    <!-- Elements will be added by JavaScript -->
+</div>
+
+<!-- Background Particles -->
+<div class="particles" id="particles"></div>
+
+<!-- Main Content -->
+<div class="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 relative mt-16">
+    <!-- Profile Section -->
+    <div
+        class="w-full max-w-6xl bg-gray-800 rounded-xl shadow-xl overflow-hidden glow hover-effect transition-all duration-500 transform hover:scale-[1.01] p-8 border border-gray-700">
+        <!-- Profile Header -->
+        <div class="flex flex-col md:flex-row items-center gap-8 mb-12">
+            <!-- Profile Photo -->
+            <div
+                class="w-48 h-48 rounded-full border-4 border-teal-400 overflow-hidden shadow-lg glow hover:border-teal-300">
+                {% if profile.photo %}
+                <img src="{{ profile.photo.url }}" alt="{% trans 'Profile Photo' %}"
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                {% else %}
+                <img src="https://via.placeholder.com/300" alt="{% trans 'Profile Photo' %}"
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                {% endif %}
+            </div>
+
+            <!-- Basic Info -->
+            <div class="text-center md:text-left">
+                <h1 class="text-4xl font-bold text-white mb-2">{{ profile.name }}</h1>
+                <h2 class="text-2xl text-teal-400 mb-4">{{ profile.title }}</h2>
+            </div>
+        </div>
+
+        <!-- About Me Section -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold text-teal-400 mb-6 border-b border-gray-700 pb-2">{% trans "About Me" %}</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <p class="text-gray-300 mb-4">
+                        {{ profile.description }}
+                    </p>
+                </div>
+                <div>
+                    <div class="bg-gray-700 p-6 rounded-lg hover:bg-gray-600 transition-colors duration-300">
+                        <h3 class="text-xl font-semibold text-white mb-4">{% trans "Personal Info" %}</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <span class="text-teal-400 w-24">{% trans "Age:" %}</span>
+                                <span class="text-gray-300">
+                                    {% if profile.age %}
+                                    {{ profile.age }}
+                                    {% else %}
+                                    {% trans "Not specified" %}
+                                    {% endif %}
+
+
+                                </span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-teal-400 w-24">{% trans "Location:" %}</span>
+                                <span class="text-gray-300">
+                                    {% if profile.location %}
+                                    {{ profile.location }}
+                                    {% else %}
+                                    {% trans "Not specified" %}
+                                    {% endif %}
+
+
+                                </span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-teal-400 w-24">{% trans "Email:" %}</span>
+                                <span class="text-gray-300">
+                                    {% if profile.email %}
+                                    {{ profile.email }}
+                                    {% else %}
+                                    {% trans "Not specified" %}
+                                    {% endif %}
+                                </span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-teal-400 w-24">{% trans "Phone:" %}</span>
+                                <span class="text-gray-300">
+                                    {% if profile.phone %}
+                                    {{ profile.phone }}
+                                    {% else %}
+                                    {% trans "Not specified" %}
+                                    {% endif %}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold text-teal-400 mb-6 border-b border-gray-700 pb-2">{% trans "My Skills" %}</h2>
+            <div class="space-y-6">
+                {% if profile.skills.exists %}
+                {% for skill in profile.skills.all %}
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="text-gray-300">{{ skill.name }}</span>
+                        <span class="text-teal-400">{{ skill.proficiency }}</span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2.5">
+                        <div class="bg-teal-500 h-2.5 rounded-full hover:bg-teal-400 transition-colors duration-300"
+                            style="width: {{ skill.proficiency }}%"></div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <p class="text-gray-300">{% trans "No skills added." %}</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Portfolio Section -->
+        <div>
+            <h2 class="text-3xl font-bold text-teal-400 mb-6 border-b border-gray-700 pb-2">{% trans "My Portfolio" %}
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                {% for project in projects %}
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg bg-gray-800 transition transform hover:-translate-y-1 hover:shadow-teal-500/30">
+                    <div class="h-64 overflow-hidden">
+                        {% if project.image %}
+                            <img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        {% else %}
+                            <img src="/static/img/default.jpg" alt="No Image" class="w-full h-full object-cover opacity-50">
+                        {% endif %}
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 p-5 flex flex-col justify-end">
+                        <h3 class="text-xl font-bold mb-2">{{ project.title }}</h3>
+                        <p class="text-sm text-gray-300 mb-3">{{ project.description|truncatewords:20 }}</p>
+                        {% if project.link %}
+                        <a href="{{ project.link }}" target="_blank" class="inline-block px-4 py-2 bg-teal-600 hover:bg-teal-700 rounded text-white text-sm transition">{% trans "View Project" %}</a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% empty %}
+                    <p class="text-center col-span-full text-gray-400">{% trans "No projects found." %}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    
+        <div class="text-center mt-20 animate-fade-in-up delay-300">
+            <a href="#" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-500 text-white font-medium rounded-full hover:shadow-lg hover:shadow-teal-500/30 transition-all duration-300 group">
+                {% trans "All projects" %}
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+            </a>
+        </div>
+</div>
+
+    <script>
+        // Initialize animated background
+        document.addEventListener('DOMContentLoaded', function () {
+            const background = document.getElementById('animatedBackground');
+
+            // Create floating particles
+            for (let i = 0; i < 50; i++) {
+                createParticle(background);
+            }
+
+            // Create floating circles
+            for (let i = 0; i < 5; i++) {
+                createFloatingCircle(background);
+            }
+
+            // Create light pulses
+            for (let i = 0; i < 3; i++) {
+                createLightPulse(background);
+            }
+        });
+
+        function createParticle(container) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+
+            // Random size between 2px and 6px
+            const size = Math.random() * 4 + 2;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+
+            // Random position
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+
+            // Random animation
+            const duration = Math.random() * 20 + 10;
+            const delay = Math.random() * 5;
+            particle.style.animation = `floatAnimation ${duration}s linear ${delay}s infinite`;
+
+            container.appendChild(particle);
+        }
+
+        function createFloatingCircle(container) {
+            const circle = document.createElement('div');
+            circle.classList.add('floating-circle');
+
+            // Random size between 100px and 300px
+            const size = Math.random() * 200 + 100;
+            circle.style.width = `${size}px`;
+            circle.style.height = `${size}px`;
+
+            // Random color
+            const colors = ['#4fd1c5', '#667eea', '#764ba2'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            circle.style.backgroundColor = color;
+
+            // Random position
+            circle.style.left = `${Math.random() * 100}%`;
+            circle.style.top = `${Math.random() * 100 + 100}%`;
+
+            // Random animation
+            const duration = Math.random() * 30 + 30;
+            const delay = Math.random() * 10;
+            circle.style.animation = `floatAnimation ${duration}s linear ${delay}s infinite`;
+
+            container.appendChild(circle);
+        }
+
+        function createLightPulse(container) {
+            const pulse = document.createElement('div');
+            pulse.classList.add('light-pulse');
+
+            // Random size between 200px and 500px
+            const size = Math.random() * 300 + 200;
+            pulse.style.width = `${size}px`;
+            pulse.style.height = `${size}px`;
+
+            // Random position
+            pulse.style.left = `${Math.random() * 100}%`;
+            pulse.style.top = `${Math.random() * 100}%`;
+
+            // Random animation delay
+            const delay = Math.random() * 6;
+            pulse.style.animationDelay = `${delay}s`;
+
+            container.appendChild(pulse);
+        }
+    </script>
+    {% endblock %}

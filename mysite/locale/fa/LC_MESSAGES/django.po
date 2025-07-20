@@ -1,0 +1,361 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-20 17:41+0330\n"
+"PO-Revision-Date: 2025-07-20 17:42+0000\n"
+"Last-Translator:   <admin@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.10.2\n"
+
+#: .\main\models.py:13
+msgid "Name"
+msgstr "نام شما"
+
+#: .\main\models.py:14 .\main\models.py:45
+msgid "Title"
+msgstr "عنوان"
+
+#: .\main\models.py:15 .\main\models.py:47
+msgid "Description"
+msgstr "توضیحات"
+
+#: .\main\models.py:16
+msgid "Photo"
+msgstr "عکس"
+
+#: .\main\models.py:18
+msgid "Age"
+msgstr "سن"
+
+#: .\main\models.py:19
+msgid "Location"
+msgstr "مکان"
+
+#: .\main\models.py:20
+msgid "Email"
+msgstr "ایمیل"
+
+#: .\main\models.py:21
+msgid "Phone"
+msgstr "تلفن"
+
+#: .\main\models.py:28
+msgid "Skill Name"
+msgstr "نام مهارت"
+
+#: .\main\models.py:29
+msgid "Proficiency %"
+msgstr "درصد مهارت"
+
+#: .\main\models.py:36 .\main\models.py:66
+msgid "Project Title"
+msgstr "عنوان پروژه"
+
+#: .\main\models.py:37 .\main\models.py:67
+msgid "Project Description"
+msgstr "شرح پروژه"
+
+#: .\main\models.py:38 .\main\models.py:69
+msgid "Project Image"
+msgstr "تصویر پروژه"
+
+#: .\main\models.py:46
+msgid "Issue Date"
+msgstr "تاریخ صدور"
+
+#: .\main\models.py:48
+#, fuzzy
+#| msgid "Project Image"
+msgid "Certificate Image"
+msgstr "تصویر پروژه"
+
+#: .\main\models.py:49
+msgid "Verification URL"
+msgstr "آدرس اینترنتی "
+
+#: .\main\models.py:58
+msgid "Certificate"
+msgstr "گواهی"
+
+#: .\main\models.py:59
+msgid "Certificates"
+msgstr "گواهینامه‌ها"
+
+#: .\main\models.py:68
+msgid "Category"
+msgstr "دسته بندی"
+
+#: .\main\models.py:70
+#, fuzzy
+#| msgid "Project Title"
+msgid "Project Link"
+msgstr "عنوان پروژه"
+
+#: .\main\models.py:74
+#, fuzzy
+#| msgid "Portfolio"
+msgid "Portfolio Project"
+msgstr "نمونه کارها"
+
+#: .\main\models.py:75
+#, fuzzy
+#| msgid "Portfolio"
+msgid "Portfolio Projects"
+msgstr "نمونه کارها"
+
+#: .\main\templates\main\About.html:5 .\main\templates\main\Blog.html:5
+#: .\main\templates\main\portfolio.html:5
+#, fuzzy
+msgid "About Arad Rezvaninejad"
+msgstr "رضوانی نژاد"
+
+#: .\main\templates\main\About.html:236 .\main\templates\main\index.html:206
+msgid "My Skills"
+msgstr "مهارت‌های من"
+
+#: .\main\templates\main\About.html:252 .\main\templates\main\index.html:222
+msgid "No skills added."
+msgstr "هیچ مهارتی اضافه نشده."
+
+#: .\main\templates\main\About.html:261
+msgid "My Certificates"
+msgstr "گواهینامه‌های من"
+
+#: .\main\templates\main\About.html:279
+msgid "No image"
+msgstr "بدون تصویر"
+
+#: .\main\templates\main\About.html:287
+msgid "Issue Date:"
+msgstr "تاریخ صدور:"
+
+#: .\main\templates\main\About.html:291
+msgid "Verify Certificate"
+msgstr "تأیید گواهی"
+
+#: .\main\templates\main\About.html:303
+msgid "No certificates available."
+msgstr "هیچ گواهی‌نامه‌ای موجود نیست."
+
+#: .\main\templates\main\About.html:312 .\main\templates\main\Blog.html:220
+#: .\main\templates\main\contact.html:222
+#: .\main\templates\main\portfolio.html:269
+msgid "© 2023 Arad. All rights reserved."
+msgstr "© ۲۰۲۳  آراد. تمامی حقوق محفوظ است."
+
+#: .\main\templates\main\Blog.html:212
+msgid "Coming Soon"
+msgstr "به زودی"
+
+#: .\main\templates\main\contact.html:5 .\templates\base.html:98
+#: .\templates\base.html:148
+msgid "Contact"
+msgstr "ارتباط با ما "
+
+#: .\main\templates\main\contact.html:131
+msgid "Contact Me"
+msgstr "ارتباط با ما "
+
+#: .\main\templates\main\contact.html:172
+msgid "Your Name"
+msgstr "نام شما"
+
+#: .\main\templates\main\contact.html:179
+msgid "Enter your name"
+msgstr "نام خود را وارد کنید"
+
+#: .\main\templates\main\contact.html:185
+msgid "Email Address"
+msgstr "آدرس ایمیل"
+
+#: .\main\templates\main\contact.html:192
+msgid "your@email.com"
+msgstr "your@email.com"
+
+#: .\main\templates\main\contact.html:198
+msgid "Message"
+msgstr "پیام"
+
+#: .\main\templates\main\contact.html:204
+msgid "Your message here..."
+msgstr "پیام شما اینجا ..."
+
+#: .\main\templates\main\contact.html:211
+msgid "Send Message"
+msgstr "ارسال پیام"
+
+#: .\main\templates\main\contact.html:224
+msgid "Twitter"
+msgstr "توییتر"
+
+#: .\main\templates\main\contact.html:227
+msgid "GitHub"
+msgstr "گیت‌هاب"
+
+#: .\main\templates\main\contact.html:230
+msgid "LinkedIn"
+msgstr "لینکدین"
+
+#: .\main\templates\main\index.html:4 .\templates\base.html:86
+msgid "Arad"
+msgstr "آراد"
+
+#: .\main\templates\main\index.html:127 .\main\templates\main\index.html:130
+msgid "Profile Photo"
+msgstr "عکس پروفایل"
+
+#: .\main\templates\main\index.html:144
+msgid "About Me"
+msgstr "درباره"
+
+#: .\main\templates\main\index.html:153
+msgid "Personal Info"
+msgstr "اطلاعات شخصی"
+
+#: .\main\templates\main\index.html:156
+msgid "Age:"
+msgstr "سن:"
+
+#: .\main\templates\main\index.html:161 .\main\templates\main\index.html:173
+#: .\main\templates\main\index.html:185 .\main\templates\main\index.html:195
+msgid "Not specified"
+msgstr "مشخص نشده"
+
+#: .\main\templates\main\index.html:168
+msgid "Location:"
+msgstr "مکان:"
+
+#: .\main\templates\main\index.html:180
+msgid "Email:"
+msgstr "ایمیل:"
+
+#: .\main\templates\main\index.html:190
+msgid "Phone:"
+msgstr "تلفن:"
+
+#: .\main\templates\main\index.html:229
+msgid "My Portfolio"
+msgstr "نمونه کارها"
+
+#: .\main\templates\main\index.html:245
+#: .\main\templates\main\portfolio.html:254
+msgid "View Project"
+msgstr "مشاهده پروژه"
+
+#: .\main\templates\main\index.html:250
+#: .\main\templates\main\portfolio.html:259
+msgid "No projects found."
+msgstr "هیچ پروژه‌ای یافت نشد."
+
+#: .\main\templates\main\index.html:258
+msgid "All projects"
+msgstr "همه پروژه‌ها"
+
+#: .\main\templates\main\portfolio.html:239
+msgid "My Projects"
+msgstr "پروژه‌های من"
+
+#: .\main\views.py:16
+msgid "Hello, world! This is a multilingual site."
+msgstr "سلام دنیا! این یک سایت چندزبانه است."
+
+#: .\main\views.py:24
+msgid "Contact us at:)"
+msgstr "ارتباط با ما "
+
+#: .\main\views.py:33
+msgid "Please fill in all fields."
+msgstr "لطفا تمام فیلدها را پر کنید."
+
+#: .\main\views.py:36
+msgid "Only @gmail.com emails are allowed."
+msgstr "فقط ایمیل‌های @gmail.com مجاز هستند."
+
+#: .\main\views.py:64
+msgid "Your message has been sent successfully."
+msgstr "پیام شما با موفقیت ارسال شد."
+
+#: .\main\views.py:67
+msgid "Thank you for your message"
+msgstr "از پیام شما متشکرم"
+
+#: .\main\views.py:70
+msgid ""
+"Thank you for contacting us. We have received your message and will get back to you soon.\n"
+"\n"
+"Your message:\n"
+msgstr ""
+"از تماس شما متشکریم. پیام شما را دریافت کردیم و به زودی با شما تماس خواهیم گرفت.\n"
+"\n"
+"پیام شما:\n"
+
+#: .\main\views.py:98
+msgid ""
+"Your message has been sent successfully. A confirmation email has been sent "
+"to you."
+msgstr "پیام شما با موفقیت ارسال شد."
+
+#: .\main\views.py:104
+msgid "An error occurred while sending the email. Please try again later."
+msgstr "هنگام ارسال ایمیل خطایی رخ داد. لطفاً بعداً دوباره امتحان کنید."
+
+#: .\main\views.py:119
+msgid "This is the About page."
+msgstr "این صفحه درباره است."
+
+#: .\main\views.py:128
+#, fuzzy
+#| msgid "This is the About page."
+msgid "This is the Blog page."
+msgstr "این صفحه درباره است."
+
+#: .\main\views.py:136
+#, fuzzy
+#| msgid "This is the About page."
+msgid "This is the Portfolio page."
+msgstr "این صفحه درباره است."
+
+#: .\templates\base.html:87
+msgid "Rezvaninejad"
+msgstr "رضوانی نژاد"
+
+#: .\templates\base.html:94 .\templates\base.html:145
+msgid "About"
+msgstr "درباره"
+
+#: .\templates\base.html:96 .\templates\base.html:146
+msgid "Portfolio"
+msgstr "نمونه کارها"
+
+#: .\templates\base.html:97 .\templates\base.html:147
+msgid "Blog"
+msgstr "بلاگ"
+
+#~ msgid "No portfolio items."
+#~ msgstr "هیچ موردی در نمونه کارها وجود ندارد."
+
+#~ msgid "Learn"
+#~ msgstr "اموزش"
+
+#~ msgid "Web Developer & Ai Developer"
+#~ msgstr "توسعه‌دهنده وب و توسعه‌دهنده هوش مصنوعی"
+
+#~ msgid ""
+#~ "Passionate developer creating beautiful, functional web experiences. "
+#~ "Specializing in backend development development with a focus on user "
+#~ "experience."
+#~ msgstr ""
+#~ "توسعه‌دهنده‌ی پرشور و اشتیاق برای خلق تجربه‌های وب زیبا و کاربردی. متخصص در "
+#~ "توسعه‌ی بک‌اند با تمرکز بر تجربه‌ی کاربری."
