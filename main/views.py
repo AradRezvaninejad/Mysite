@@ -127,7 +127,7 @@ def blog(request):
     context = {
         "data": _("This is the Blog page."),
     }
-    return render(request, "main/Blog.html", context=context)
+    return render(request, "main/blog.html", context=context)
 
 
 def portfolio(request):
