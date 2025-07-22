@@ -1,0 +1,38 @@
+# Core Django
+Django>=4.2,<5.0
+
+# For deployment (production server + static files)
+gunicorn
+whitenoise
+
+# Database and environment management
+psycopg2-binary           # PostgreSQL
+python-decouple
+dj-database-url
+
+# Media/image handling
+Pillow
+
+# Multilingual support
+django-modeltranslation
+
+# Admin UI enhancements
+django-grappelli          # Optional, for better admin interface
+django-filebrowser        # Optional, for managing images/files
+
+# Tailwind CSS integration
+django-browser-reload
+django-tailwind
+
+# API support (optional if needed later)
+djangorestframework
+
+# For forms (e.g., better form rendering)
+django-crispy-forms
+crispy-bootstrap5
+
+# Security
+django-cors-headers
+
+# SEO (optional)
+django-meta
