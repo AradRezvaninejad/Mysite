@@ -15,6 +15,7 @@ Pillow
 
 # Multilingual support
 django-modeltranslation
+django-rosetta            # For translation UI in admin
 
 # Admin UI enhancements
 django-grappelli          # Optional, for better admin interface
