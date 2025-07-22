@@ -96,12 +96,6 @@ else:
     }
 
 #####################################################
-"disks": [
-        {
-            "name": "uploads",
-            "mountTo": "media"
-        }
-    ] 
 
 # DATABASES = {
 #     'default': {
