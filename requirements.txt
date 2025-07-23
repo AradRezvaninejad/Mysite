@@ -37,3 +37,4 @@ django-cors-headers
 
 # SEO (optional)
 django-meta
+django-modeltranslation>=0.18,<0.19
