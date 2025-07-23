@@ -14,7 +14,6 @@ dj-database-url
 Pillow
 
 # Multilingual support
-django-modeltranslation
 django-rosetta            # For translation UI in admin
 
 # Admin UI enhancements
@@ -37,4 +36,3 @@ django-cors-headers
 
 # SEO (optional)
 django-meta
-django-modeltranslation>=0.18,<0.19
