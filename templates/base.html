@@ -134,24 +134,47 @@
                 
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M4 5h16v2H4zm0 6h16v2H4zm0 6h16v2H4z"/>
+                </svg>
+            </button>
                 </div>
             </div>
             
             <!-- Mobile Navigation -->
             <div id="mobile-menu" class="mobile-menu md:hidden mt-4">
                 <div class="flex flex-col space-y-4 px-2 py-4">
-                    <a href="{% url "About" %}" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">{% trans "About" %}</a>
-                    <a href="{% url "portfolio" %}" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">{% trans "Portfolio" %}</a>
-                    
+                    <a href="{% url 'About' %}" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">{% trans "About" %}</a>
+                    <a href="{% url 'portfolio' %}" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">{% trans "Portfolio" %}</a>
+                    <a href="{% url 'contact' %}" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">{% trans "Contact" %}</a>
+
+                    <!-- لینک تغییر زبان -->
+                    {% get_current_language as LANGUAGE_CODE %}
+                    <div class="flex justify-start space-x-4 pt-2">
+                        {% if LANGUAGE_CODE == 'fa' %}
+                            <a href="/en{{ request.get_full_path|slice:'3:' }}" 
+                            class="text-gray-300 hover:text-white border border-gray-500 rounded px-3 py-1 transition duration-300">
+                            EN
+                            </a>
+                        {% else %}
+                            <a href="/fa{{ request.get_full_path|slice:'3:' }}" 
+                            class="text-gray-300 hover:text-white border border-gray-500 rounded px-3 py-1 transition duration-300">
+                            FA
+                            </a>
+                        {% endif %}
+                    </div>
+
                     <div class="flex space-x-6 pt-4">
-                        <a href="https://ir.linkedin.com/in/arad-rezvaninejad-95aa31349" target="_blank" class="social-icon linkedin text-gray-400 hover:text-blue-400">
-                            <i class="fab fa-linkedin-in text-xl"></i>
-                        </a>
-                        <a href="https://www.instagram.com/arad.rezvaninejad" target="_blank" class="social-icon instagram text-gray-400 hover:text-blue-400">
-                            <i class="fab fa-instagram text-xl"></i>
+                            <a href="https://github.com/aradrezvaninejad" target="_blank" class="social-icon text-gray-400 hover:text-white transition">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            <a href="http://karlancer.com/profile/598697" target="_blank" class="social-icon text-gray-400 hover:text-white transition">
+                                <i class="fas fa-briefcase text-xl"></i>
+                            </a>
+                            <a href="https://ir.linkedin.com/in/arad-rezvaninejad-95aa31349" target="_blank" class="social-icon text-gray-400 hover:text-blue-400 transition">
+                                <i class="fab fa-linkedin-in text-xl"></i>
+                            </a>
                         </a>
                     </div>
                 </div>
@@ -166,10 +189,21 @@
     </main>
 
     <script>
-        // اسکریپت باز و بسته کردن منوی موبایل
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        document.addEventListener('DOMContentLoaded', function () {
+            const btn = document.getElementById('mobile-menu-button');
             const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('open');
+
+            btn.addEventListener('click', function () {
+                const isOpen = menu.classList.contains('max-h-96');
+
+                if (isOpen) {
+                    menu.classList.remove('max-h-96', 'opacity-100');
+                    menu.classList.add('max-h-0', 'opacity-0');
+                } else {
+                    menu.classList.remove('max-h-0', 'opacity-0');
+                    menu.classList.add('max-h-96', 'opacity-100');
+                }
+            });
         });
     </script>
 </body>
